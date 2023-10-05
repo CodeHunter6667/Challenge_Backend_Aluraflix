@@ -7,13 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-var app = builder.Build();
-
 string mySqlConnection = builder.Configuration.GetConnectionString("MySQLConnection");
 
-builder.Services.AddDbContext<AppDbContext>(options => 
-options.UseMySql(mySqlConnection, 
+builder.Services.AddDbContext<AppDbContext>(options =>
+options.UseMySql(mySqlConnection,
 ServerVersion.AutoDetect(mySqlConnection)));
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
